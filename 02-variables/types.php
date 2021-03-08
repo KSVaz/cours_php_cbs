@@ -33,21 +33,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../01-intro/introduction.php">Introduction</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="variables.php">Variables</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="types.php">Types</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chaines.php">Chaînes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tableaux.php">Tableaux</a>
-                    </li>
-                    
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                        <a class="nav-link dropdown-toggle active" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">02-variables</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="../02-variables/variables.php">Variables</a>
+                            <a class="dropdown-item active" href="../02-variables/types.php">Types</a>
+                            <a class="dropdown-item" href="../02-variables/chaines.php">Chaînes</a>
+                            <a class="dropdown-item" href="../02-variables/tableaux.php">Tableaux</a>
+                        </div>
+                    </li> 
+
+                    <!-- PLAN DU COURS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan du cours</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="#I.">I. Les types de données</a>
                             <a class="dropdown-item" href="#II.">II. Le opérateurs numériques</a>
@@ -56,7 +55,7 @@
                 </ul>
             </div>
         </nav>
-    <!-- fin navbar -->
+        <!-- fin navbar -->
     </div><!-- fin du container fluid -->
 
     <!-- ========================================= -->
