@@ -39,6 +39,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="types.php">Types</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chaines.php">Chaînes</a>
+                    </li>
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
