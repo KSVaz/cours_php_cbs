@@ -112,26 +112,77 @@
                     <tbody>
                         <tr>
                             <th scope="row">+</th>
-                            <td>Addition</td>
+                            <td>Addition
+                            <?php 
+                                $a = 30;
+                                $b = $a+2;
+                                $c = $a+2+4;
+                                echo "<p class=\"text-success\">";
+                                echo " $+-2 = $b<br>";
+                                echo "$a+2+4 = $c";
+                                echo "</p>";
+                            ?>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">-</th>
-                            <td>Soustraction</td>
+                            <td>Soustraction
+                            <?php 
+                                $a = 30;
+                                $b = $a-2;
+                                $c = $a-2-4;
+                                echo "<p class=\"text-success\">";
+                                echo " $a-2 = $b<br>";
+                                echo "$a-2-4 = $c";
+                                echo "</p>";
+                            ?>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">*</th>
-                            <td>Multiplication</td>
+                            <td>Multiplication<br>
+                            <?php 
+                                $a = 3;
+                                $b = $a*2;
+                                $c = $a*2*4;
+                                echo "<p class=\"text-success\">";
+                                echo " $a*2 = $b<br>";
+                                echo "$a*2*4 = $c";
+                                echo "</p>";
+                            ?>
+                            
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">**</th>
                             <td>Puissance (associatif à droite)<br>
                                 $a=3;<br>
                                 echo $a**2; //Affiche 9<br>
-                                echo $a**2**4; //Affiche 43046721 soit 3**(2**4) ou 316</td>
+                                echo $a**2**4; //Affiche 43046721 soit 3**(2**4) ou 316
+                            
+                            <?php 
+                                $a = 3;
+                                $b = $a**2;
+                                $c = $a**2**4;
+                                echo "<p class=\"text-success\">";
+                                echo " $a**2 = $b<br>";
+                                echo "$a**2**4 = $c";
+                                echo "</p>";
+                            ?>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">/</th>
-                            <td>Division</td>
+                            <td>Division<br>
+                            
+                            <?php 
+                                $var = 30;
+                                $var2 = 2;
+                                echo "<p class=\"text-success\">";
+                                echo "\$var divisé par \$var2 = $var/$var2";
+                                echo "</p>";
+                            ?>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">%</th>
@@ -143,10 +194,10 @@
 
                             <?php  
                                 $var = 159;
-                                echo "<div class=\"text-success pt-4\"><strong>Dans la variable \$var j'ai rentré 159.<br>";
+                                echo "<div class=\"text-success pt-4\">Dans la variable \$var j'ai rentré 159.<br>";
                                 echo "Si je veux afficher le contenu de \$var le voici : \$var contient $var<br>";
-                                echo "<strong>Le résultat du modulo de $var par 7 : \$var%7 est égal à " .$var%7;
-                                echo "</strong></div>";
+                                echo "Le résultat du modulo de $var par 7 : \$var%7 est égal à " .$var%7;
+                                echo "</div>";
                             ?>
                             </td>
                         </tr>
@@ -156,7 +207,15 @@
                             $var=56;<br>
                             echo $var--; //affiche 56 puis décrémente $var.<br>
                             echo $var; //affiche 55.<br>
-                            echo --$var; //décrémente $var puis affiche 54.
+                            echo --$var; //décrémente $var puis affiche 54.<br>
+                            <?php 
+                                $var = 56;
+                                $var--;
+                                echo "<p class=\"text-success\">La variable \$var est égale à $var</p>";
+                                echo "<p class=\"text-success\">";
+                                echo --$var;
+                                echo "</p>";
+                            ?>
                             </td>
                         </tr>
                         <tr>
@@ -170,12 +229,12 @@
                                 
                                 $var = 56;   
                                                        
-                                echo "<div class=\"text-success pt-4\"><strong>test<br>";
-                                echo $var++. "<br> $var </strong></div><br>";  
+                                echo "<div class=\"text-success pt-4\">test<br>";
+                                echo $var++. "<br> $var </div><br>";  
 
-                                echo "<div><strong>Autre exemple de concaténation :</strong></div>";
+                                echo "<div>Autre exemple de concaténation :</div>";
 
-                                echo "<div class=\"text-success pt-4\"><strong>test<br>" .$var++. "<br>" .$var. "<br>" .++$var. "</strong></div>";                       
+                                echo "<div class=\"text-success pt-4\">test<br>" .$var++. "<br>" .$var. "<br>" .++$var. "</div>";                       
 
                             ?>
                             </td>
@@ -188,7 +247,7 @@
                 <?php 
                     $a = 89;
                     $b =($a<100); // dans le cas où c'est FALSE, il affichera une chaîne vide
-                    echo "<div class=\"text-success\"><strong>\$b vaut $b<br></strong></div>";
+                    echo "<div class=\"text-success\">\$b vaut $b<br></div>";
                 ?>
 
                 <h3 class="pt-4 pb-3">Les opérateurs booléens</h3>
