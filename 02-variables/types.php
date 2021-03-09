@@ -22,7 +22,8 @@
         <!-- ========================================= -->
         <!-- Navbar -->
         <!-- ========================================= -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
+        <?php require("../inc/nav.inc.php"); ?>
+        <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
             <a class="navbar-brand" href="#">Cours PHP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,10 +43,10 @@
                             <a class="dropdown-item" href="../02-variables/chaines.php">Chaînes</a>
                             <a class="dropdown-item" href="../02-variables/tableaux.php">Tableaux</a>
                         </div>
-                    </li> 
+                    </li>  -->
 
                     <!-- PLAN DU COURS -->
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan du cours</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             <a class="dropdown-item" href="#I.">I. Les types de données</a>
@@ -54,7 +55,7 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav> -->
         <!-- fin navbar -->
     </div><!-- fin du container fluid -->
 

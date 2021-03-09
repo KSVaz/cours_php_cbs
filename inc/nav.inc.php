@@ -10,11 +10,9 @@
                 <a class="nav-link active" href="introduction.php">Introduction</a>
             </li> -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="introduction.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Introduction</a>
+                <a class="nav-link dropdown-toggle active" href="introduction.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">01-intro</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                    <a class="dropdown-item" href="#I.">I. Intro</a>
-                    <a class="dropdown-item" href="#II.">II. Exemples</a>
-                    <a class="dropdown-item" href="#III.">III. Inclure des fichiers externes</a>
+                    <a class="dropdown-item" href="../01-intro/introduction.php">Introduction</a>
                 </div>
             </li>
 

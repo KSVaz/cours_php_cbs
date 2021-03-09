@@ -22,7 +22,8 @@
         <!-- ========================================= -->
         <!-- Navbar -->
         <!-- ========================================= -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
+        <?php require("../inc/nav.inc.php"); ?>
+        <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
             <a class="navbar-brand" href="#">Cours PHP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +45,7 @@
                         </div>
                     </li> 
 
-                    <!-- PLAN DU COURS -->
+        
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan du cours</a>
@@ -55,10 +56,10 @@
                                             <a class="dropdown-item" href="#IV.">IV. Les opérateurs d'affectation combinés</a>
                                             <a class="dropdown-item" href="#V.">V. Les constantes</a>
                         </div>
-                    </li> <!-- Fin sous titres -->
+                    </li> 
                 </ul>
             </div>
-        </nav>
+        </nav> -->
         <!-- fin navbar -->
     </div><!-- fin du container fluid -->
 
