@@ -11,6 +11,7 @@
     <?php echo "<title> Page 01 - un exemple </title>"; ?>
 </head>
 <body>
+    
     <?php 
         echo "<h1> Cours sur le $variable1 </h1>";
     ?>
