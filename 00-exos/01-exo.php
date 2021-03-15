@@ -95,6 +95,8 @@
             </div>
         </div><!-- fin row -->
 
+        <hr>
+
         <div class="row bg-light p-3">
             <div class="col-sm-12">
             <h2><span>2.</span> var_dump()</h2>
@@ -107,6 +109,8 @@
                 ?>
             </div>
         </div><!-- fin row -->
+
+        <hr>
 
         <div class="row bg-light p-3">
             <div class="col-sm-12">
@@ -121,6 +125,8 @@
             </div>
         </div><!-- fin row -->
 
+        <hr>
+
         <div class="row bg-light p-3">
             <div class="col-sm-12">
             <h2><span>4.</span> Concaténation</h2>
@@ -131,6 +137,8 @@
                 ?>
             </div>
         </div><!-- fin row -->
+
+        <hr>
 
         <div class="row bg-light p-3">
             <div class="col-sm-12">
@@ -250,6 +258,8 @@
                     ?>
             </div><!-- fin col -->
         </div><!-- fin row -->
+
+        <hr>
 
         <div class="row bg-light p-3">
             <div class="col-sm-12">
@@ -383,6 +393,30 @@
                     }else {
                         echo "Langue inconnue !";
                     }
+
+                    echo "<p><strong>Boucle FOR******************</strong></p><br>";
+
+                    // mini exo :
+                    //afficher les mois de 1 à 12 à l'aide d'une boucle for dans un menu déroulant
+
+                    echo "<label for=\"mois\">Mois :</label><select name=\"mois\" class=\"form-control w-25\">";
+                    echo "<option>Sélectionnez un mois</option>";
+                    for ($i = 1; $i <=12; $i++) {
+                        echo "<option>" .$i. "</option>";
+                    }
+                    echo "</select><br>";
+
+                    //mini exo
+                    //faire une boucle for qui affiche 0 à 9 sur la même ligne
+                    // compléter cette boucle pour mettre les chiffres dans un tableau HTML
+
+                    echo "<table class=\"table table-bordered table-info mt-4\"><tr>";
+                    for ($i=0; $i<=9; $i++) {
+                        echo "<td>".$i. "</td>";
+                    }
+                    echo "</tr></table>";
+
+
 
                 ?>
             </div>

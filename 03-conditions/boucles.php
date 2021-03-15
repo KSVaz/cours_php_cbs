@@ -132,6 +132,8 @@
                     foreach ($tab as $ind=>$val) {//on récupère indice et valeur
                         echo "2 puissance $ind vaut $val <br>";
                     }
+
+                    echo "Le dernier indice de mon tableau est $ind et la dernière valeur est $val.";
                 ?> 
                
             </div><!-- fin col -->
