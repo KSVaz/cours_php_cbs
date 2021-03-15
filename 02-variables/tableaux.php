@@ -1,3 +1,4 @@
+<?php require_once '../inc/functions.php'; ?> 
 <!doctype html>
 <html lang="fr">
   <head>
@@ -77,26 +78,54 @@
         <div id="I." class="row bg-light">
             <div class="col-sm-12">
                 <h2><span>I.</span> Les tableaux</h2>
-                <p>Texte à venir</p>
+                <p>Un tableau appelé array en anglais est une variable améliorée dans laquelle on stocke une multitude de valeurs. Ces valeurs peuvent être de n'importe quel type. Elles possèdent un indice dont la numérotation commence à 0.</p>
                 <blockquote>
-
+                    <!-- déclarer un tableau - les valeurs du tableau sont indiquées dans les () -->
+                    <code>$tableau1 = array('Dalio', 'Gabin', 'Arletty', 'Fernandel', 'Pauline Carton');</code>
                 </blockquote>
                 <?php 
                     $tab[0] = 2004; // la variable $tab est un tableau par le simple fait que son nom est suivi de crochets
-                    $tab[1] = 31.14E7;
+                    $tab[1] = 3.14;
                     $tab[2] = "PHP 7";
                     $tab[35] = $tab[2]. " et MySQL"; // Les éléments indicés entre 2 et 35 n'existent pas
                     $tab[] = "coucou"; // l'indice sera 36 : avantage d'ajouter un élément à la fin d'un tableau sans connaître la valeur du premier indice disponible
                     
                     echo "<p><strong>Nombre d'éléments du tableau ".count($tab)."</strong></p>"; // ils ne sont donc pas comptés
                     echo "<p><strong>Le langage préféré de l'open source est $tab[2] </strong></p>";
-                    echo "<p><strong>Utilisez $tab[35]</strong</p>";
+                    echo "<p><strong>Utilisez $tab[35]</strong></p>";
+
+                    // jePrintR($tab);
+                    // jeVarDump($tab);
                 ?>          
             </div><!-- fin col -->
 
             <div id="II." class="col-sm-12">
-                <h2><span>II.</span> </h2>
-                
+                <h2><span>II.</span> Les tableaux associatifs</h2>
+                <p>Dans un tableau associatif, nous pouvons choisir le nom des indices ou des index, c'est-à-dire que nous associons un indice créé par nous à sa valeur.</p>
+
+                <?php 
+
+                    $couleurs = array (
+                        'b' => 'bleu',
+                        'bl' => 'blanc',
+                        'r' => 'rose',
+                    );
+
+                    jeVarDump($couleurs);
+
+                    //pour afficher une valeur de notre tableau associatif en le cherchant par son indice
+                    echo "<p>La première couleur du tableau est " .$couleurs['b']. ".</p>";//dans des quotes il prend des quotes autour de son indice
+                    echo "<p>La première couleur du tableau est $couleurs[b].</p>"; //dans des guillemets, il y a une exception, l'indice ne prend plus de quotes
+
+                    //mini exo
+                    //compter le nombre d'éléments du tableau
+
+                    echo "<p>Le tableau \$couleurs contient " .count($couleurs). " éléments.</p>";
+                    // echo "<p>Le tableau \$couleurs contient " .sizeof($couleurs). " éléments.</p>";
+
+                    jePrintR(count($couleurs));
+                    
+                ?> 
             </div><!-- fin col -->
         </div><!-- fin row -->
 
