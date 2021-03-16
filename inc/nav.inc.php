@@ -56,7 +56,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get et Post</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                    <a class="dropdown-item" href="../04-GET/method_get.php">method GET</a>
+                    <a class="dropdown-item" href="../04-GET/01-method_get.php">01 - method GET</a>
+                    <a class="dropdown-item" href="../04-GET/02-method_get.php">02 - method GET</a>
                     <a class="dropdown-item" href="../05-POST/method_post.php">method POST</a>
                 </div>
             </li> 

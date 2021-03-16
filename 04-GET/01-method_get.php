@@ -1,3 +1,4 @@
+<?php require("../inc/functions.php"); ?>
 <!doctype html>
 <html lang="fr">
   <head>
@@ -14,7 +15,7 @@
     
     <link rel="stylesheet" href="../css/style.css">
 
-    <title>Cours PHP 7 - </title>
+    <title>Cours PHP 7 - Méthode GET</title>
 
   </head>
   <body class="bg-dark">
@@ -33,8 +34,8 @@
     <div class="container bg-white p-5">
         <div class="row jumbotron bg-light">
             <div class="col-sm-12">
-                <h1 class="text-center">Cours PHP 7 - </h1>
-                <p class="lead text-center mt-4"></p>
+                <h1 class="text-center">Cours PHP 7 - La méthode GET</h1>
+                <p class="lead text-center mt-4">$_GET représente les données qui transitent par l'URL.</p>
             </div>
         </div><!-- fin row -->
         <!-- fin du jumbotron -->
@@ -42,10 +43,30 @@
         <hr>
 
         <div class="row bg-light p-3">
-            <div class="col-sm-12 col-md-4">
-                <h2><span>I.</span> </h2>
+            <div class="col-sm-12 col-md-6">
+                <h2><span>I.</span> $_GET[]</h2>
+                <p>Il s'agit d'une superglobale et comme toutes les superglobales, c'est un tableau.</p>
+                <p>Superglobale signifie que cette variable est disponible partout dans le script, y compris au sein des fonctions.</p>
+                <p>Les informations transitent dans l'url selon la syntaxe suivante <code>mapage.php?indice1=valeur1&indiceN=valeurN</code></p>
+                <p>Et enfin, quand on récupère les données, $_GET[] se remplit selon le schéma suivant : <br><code>$_GET = array('indice1' => 'valeur1', 'indiceN' => 'valeurN');</code></p>
+            </div><!-- fin col -->
+
+            <div class="col-sm-12 col-md-6">
+                <h2><span>II.</span> </h2>
+                <!-- à partir du ? on envoie des informations via l'url à la page 02-method_get.php et elles sont réceptionnéespar la superglobale -->
+                <a href="02-method_get.php?article=jean&couleur=bleu&prix=55">Jean bleu</a><br>
+                <a href="02-method_get.php?article=robe&couleur=rouge&prix=75">Robe rouge</a><br>
+                <a href="02-method_get.php?article=pull&couleur=blanc&prix=45">Pull blanc</a><br>
+            </div><!-- fin col -->
+        </div><!-- fin row -->
+
+        <hr>
+
+        <div class="row bg-light p-3">
+            <div class="col-sm-12">
+                <h2><span>III.</span> </h2>
                 
-            </div>
+            </div><!-- fin col -->
         </div><!-- fin row -->
 
     </div> <!-- fin du container -->

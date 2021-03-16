@@ -127,7 +127,7 @@
                     for ($i = 0; $i <=5; $i++) { 
                      $tab[$i] = pow(2,$i);
                     } 
-                    //lecture des undices et des valeurs des tableaux
+                    //lecture des indices et des valeurs des tableaux
 
                     foreach ($tab as $ind=>$val) {//on récupère indice et valeur
                         echo "2 puissance $ind vaut $val <br>";

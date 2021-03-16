@@ -24,40 +24,6 @@
         <!-- Navbar -->
         <!-- ========================================= -->
         <?php require("../inc/nav.inc.php"); ?>
-        <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow">
-            <a class="navbar-brand" href="#">Cours PHP</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="navbarsExample04">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../01-intro/introduction.php">Introduction</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">02-variables</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="../02-variables/variables.php">Variables</a>
-                            <a class="dropdown-item" href="../02-variables/types.php">Types</a>
-                            <a class="dropdown-item" href="../02-variables/chaines.php">Chaînes</a>
-                            <a class="dropdown-item active" href="../02-variables/tableaux.php">Tableaux</a>
-                        </div>
-                    </li>  -->
-
-                    <!-- PLAN DU COURS -->
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan du cours</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="#I.">I. Les tableaux</a>
-                            <a class="dropdown-item" href="#II.">II. </a>
-                            <a class="dropdown-item" href="#III.">III. </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav> -->
         <!-- fin navbar -->
     </div><!-- fin du container fluid -->
 
@@ -127,24 +93,69 @@
                     
                 ?> 
             </div><!-- fin col -->
+
+            <div class="col-sm-12">
+                <h2><span>III.</span> Les tableaux multi-dimensionnels</h2>
+                <p>Un tableau multi-dimensionnel est un tableau qui contiendra une suite de tableau. Chaque tableau présente une "dimension".</p>
+
+                <?php 
+                    $tableau_multi = array (
+                        0 => array (
+                            'prenom' => 'Jean',
+                            'nom' => 'Dujardin',
+                            'telephone' => '01 42 42 42 42',
+                        ),
+                        1 => array (
+                            'prenom' => 'Alexandra',
+                            'nom' => 'Lamy',
+                            'telephone' => '01 65 98 74 41',
+                        ),
+                        2 => array (
+                            'prenom' => 'John',
+                            'nom' => 'Wayne',
+                            'telephone' => '01 45 75 85 45',
+                        ),
+                        3 => array (
+                            'prenom' => 'Ava',
+                            'nom' => 'Gardner',
+                            'telephone' => '01 02 03 04 05',
+                        ),
+                    );
+
+                    jePrintR($tableau_multi);
+                 
+                    echo $tableau_multi[0]['prenom']; //pour afficher Jean on entre d'abord l'indice 0 puis dans le sous-tableau on va à l'indice 'prenom'
+
+                    // pour parcourir le tableau multi-dimensionnel on peut faire une boucle for car ces indices sont numériques
+
+                    echo "<ul>";
+                    for ($i = 0; $i < count($tableau_multi); $i++) {
+                        echo "<li>" .$tableau_multi[$i]['prenom']. " " .$tableau_multi[$i]['nom']. "</li>";
+                    }
+                    echo "</ul>";
+
+                    // ou une boucle foreach en passant en variable les contenus de chaque indice du tableau et en ciblant les indices nommés des sous-tableaux associatifs
+                    echo "<p>";
+                    foreach ($tableau_multi as $indice => $acteur) {
+                        jePrintR($indice);
+                        echo $acteur['prenom']. " " .$acteur['nom']."<br>";
+                        // echo $tableau_multi[$indice]['prenom'];
+                    }
+                    echo "</>";
+                ?> 
+            </div><!-- fin col -->
         </div><!-- fin row -->
 
         <hr>
 
         <div id="III." class="row bg-light">
             <div class="col-sm-12">
-                <h2><span>III.</span> </h2>
-            </div>
+                <h2><span>IV.</span> </h2>
+            </div><!-- fin col -->
            
         </div><!-- fin row -->
 
         <hr>
-
-        <div id="VI." class="row bg-light">
-        <div class="col-sm-12">
-                <h2><span>IV.</span> </h2>
-            </div>
-        </div><!-- fin row -->
 
 
     </div> <!-- fin du container -->
