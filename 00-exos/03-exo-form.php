@@ -1,4 +1,4 @@
-<?php require("../inc/functions.php"); ?>
+<?php require_once '../inc/functions.php'; ?> 
 <!doctype html>
 <html lang="fr">
   <head>
@@ -15,7 +15,7 @@
     
     <link rel="stylesheet" href="../css/style.css">
 
-    <title>Cours PHP 7 - Méthode POST</title>
+    <title>Cours PHP 7 - Exos formulaires</title>
 
   </head>
   <body class="bg-dark">
@@ -24,7 +24,7 @@
         <!-- Navbar -->
         <!-- ========================================= -->
         <?php require("../inc/nav.inc.php"); ?>
-        
+    <!-- fin navbar -->
     </div><!-- fin du container fluid -->
 
     <!-- ========================================= -->
@@ -34,8 +34,7 @@
     <div class="container bg-white p-5">
         <div class="row jumbotron bg-light">
             <div class="col-sm-12">
-                <h1 class="text-center">Cours PHP 7 - La méthode POST</h1>
-                <p class="lead text-center mt-4">La méthode POST réceptionne les données d'un formulaire, $_POST est une superglobale.</p>
+                <h1 class="text-center">Cours PHP 7 - Exos formulaires</h1>
             </div>
         </div><!-- fin row -->
         <!-- fin du jumbotron -->
@@ -43,16 +42,13 @@
         <hr>
 
         <div class="row bg-light p-3">
-            <div class="col-sm-12 col-md-6">
-                <h2><span>I.</span> Formulaire</h2>
-                <ul>
-                    <li>Un formulaire doit toujours être dans une balise <code>&#8249;form></code> pour fonctionner.</li>
-                    <li>L'attribut method indique comment les données vont circuler vers le PHP.</li>
-                    <li>L'attribut action indique l'URL de destination des données (si l'attribut action est vide, les données vont vers le même script ou la même page).</li>
-                    <li>Ensuite sur les names il ne faut pas les oublier sur les formulaires ; ils constituent les indices de $_POST qui réceptionne les données.</li>
-                </ul>
+            <div class="col-sm-12">
+                <h2><span>1.</span> </h2>
+                <!-- EXO faire un formulaire avec les champs prénom, nom, email, adresse, code postal et ville -->
+                <!-- puis récupérer dans une page php 03-form-traitement.php les informations de $_POST -->
+                <!-- puis on fabriquera ensemble un fichier .txt pour stocker les infos du formulaire -->
 
-                <form action="" method="POST">
+                <form action="03-form-traitement.php" method="POST">
 
                     <div class="form-group">
                         <label for="prenom">Prénom</label>
@@ -65,45 +61,49 @@
                     </div><!-- fin champs nom -->
 
                     <div class="form-group">
-                        <label for="">Votre commentaire</label>
-                        <textarea class="form-control" id="commentaire" rows="2" name="commentaire" required></textarea>
-                    </div><!-- fin champs commentaire -->
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div><!-- fin champs email -->
+
+                    <div class="form-group">
+                        <label for="">Adresse</label>
+                        <input type="text" class="form-control" id="adresse" name="adresse" required>
+                    </div><!-- fin champs adresse -->
+
+                    <div class="form-group">
+                        <label for="code_postal">Code postal</label>
+                        <input type="number" class="form-control" id="code_postal" name="code_postal" min="01000" max="99999" required>
+                    </div><!-- fin champs code postal -->
+
+                    <div class="form-group">
+                        <label for="ville">Ville</label>
+                        <input type="text" class="form-control" id="ville" name="ville" required>
+                    </div><!-- fin champs ville -->
 
                     <button type="submit" class="btn btn-small btn-info">Envoyer</button>
 
                 </form><!-- fin du formulaire -->
-                
-            </div><!-- fin col -->
-
-            <div class="col-sm-12 col-md-6">
-                <h2><span>II.</span> Récupération des données</h2>
-
-                <ul>
-                    <li>$_POST est une superglobale qui permet de récupérer les données saisirs dans un formulaire,</li>
-                    <li>$_POST est donc un tableau (array) et il est disponible dans tous les contextes du script,</li>
-                    <li>Le tableau $_POST se remplit de la manière suivante :
-                        <code>
-                            $_POST = array(<br>
-                            'name1' => 'valeur1',<br>
-                            'nameN' => 'valeurN',<br>
-                            );
-                        </code>
-                    </li>
-                    <li>Donc ou name1 et nameN correspondent aux attributs "name" du formulaire, et où valeur1 et valeurN correspondent aux valeurs saisies par l'internaute.</li>
-                </ul>
-                
-                <?php 
-                    if (!empty($_POST)) {// si $_POST n'est pas vide, c'est qu'il est rempli et donc que le formulaire a été envoyé, notez qu'en l'état on peut l'envoyer avec des champs vides, les valeurs des $_POST étant alors des strings vides. En effet on peut avoir des informations non obligatoires dans un formulaire et les input ne seront pas remplis.
-                        // jeVarDump($_POST);
-
-                        echo "<p>Prénom : " .$_POST['prenom']. "</p><br>";
-                        echo "<p>Nom : " .$_POST['nom']. "</p><br>";
-                        echo "<blockquote>Commentaire : " .$_POST['commentaire']. "</blockquote><br>";
-                        
-                    }
-                ?> 
-            </div><!-- fin col -->
+            </div>
         </div><!-- fin row -->
+
+        <hr>
+
+        <div class="row bg-light p-3">
+            <div class="col-sm-12">
+            <h2><span>2.</span> </h2>
+               
+            </div>
+        </div><!-- fin row -->
+
+        <hr>
+
+        <div class="row bg-light mt-4">
+            <div class="col-sm-12">
+                <h2><span>3.</span> </h2>
+            </div>
+        </div>
+
+
 
     </div> <!-- fin du container -->
 

@@ -24,6 +24,8 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                     <a class="dropdown-item" href="../00-exos/01-exo.php">01-exo</a>
                     <a class="dropdown-item" href="../00-exos/02-exo-tableaux.php">02-exo-tableaux</a>
+                    <a class="dropdown-item" href="../00-exos/03-exo-form.php">03-exo-formulaires</a>
+                    <a class="dropdown-item" href="../00-exos/03-form-traitement.php">03-form-traitement</a>
                 </div>
             </li> 
 
