@@ -25,13 +25,13 @@
 
     // Création d'une fonction pour var_dump() une variable (très utile pour un tableau)
     function jeVarDump($mavariable) {//la fonction nommée avec son paramètre, une variable 
-        echo "<small class=\"bg-warning\">...var_dump()</small><pre class=\"alert alert-warning w-50\">"; 
+        echo "<small class=\"bg-warning\">...var_dump()</small><pre class=\"alert alert-warning w-75\">"; 
         var_dump($mavariable);//une variable à laquelle on applique la fonction var_dump()
         echo"</pre>";
     }
 
     function jePrintR($mavariable) {
-        echo "<small class=\"bg-info\">...print_r</small><pre class=\"alert alert-info text-info w-50\">"; 
+        echo "<small class=\"bg-info\">...print_r</small><pre class=\"alert alert-info text-info w-75\">"; 
         print_r($mavariable);
         echo"</pre>";
     }

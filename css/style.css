@@ -56,9 +56,9 @@ h4 {
 }
 
 hr {
-    height: 6px !important;
-    border-radius: 4px !important;
-    background: linear-gradient(to left, #ffc107, #28a745, #17a2b8) !important;
+    height: 6px;
+    border-radius: 4px;
+    background-image: linear-gradient(to left, #ffc107, #28a745, #17a2b8);
 }
 
 @media (max-width: 1700px) {

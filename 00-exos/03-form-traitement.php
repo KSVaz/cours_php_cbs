@@ -44,7 +44,7 @@
 
         <div class="row bg-light mt-4">
 
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12">
                 <h2><span>I.</span></h2>
                 
                 <?php 
@@ -71,23 +71,6 @@
                     } // fin if !empty
                 ?>
 
-            </div><!-- fin col -->
-
-            <div class="col-sm-12 col-md-6">
-            
-            </div><!-- fin col -->
-
-        </div><!-- fin row -->
-
-        <div class="row bg-light mt-4">
-
-            <div class="col-sm-12 col-md-6">
-                <h2><span>II.</span></h2>
-               
-            </div><!-- fin col -->
-
-            <div class="col-sm-12 col-md-6">
-            
             </div><!-- fin col -->
 
         </div><!-- fin row -->

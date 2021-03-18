@@ -63,6 +63,13 @@
                     <a class="dropdown-item" href="../05-POST/method_post.php">method POST</a>
                 </div>
             </li> 
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PDO</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="../06-PDO/01_pdo.php">PDO</a>
+                </div>
+            </li> 
         </ul>
     </div>
 </nav>

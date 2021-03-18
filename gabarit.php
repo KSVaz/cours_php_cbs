@@ -49,7 +49,7 @@
             </div><!-- fin col -->
 
             <div class="col-sm-12 col-md-6">
-            
+                <h2><span>II.</span></h2>
             </div><!-- fin col -->
 
         </div><!-- fin row -->
@@ -57,7 +57,7 @@
         <div class="row bg-light mt-4">
 
             <div class="col-sm-12 col-md-6">
-                <h2><span>II.</span></h2>
+                <h2><span>III.</span></h2>
                
             </div><!-- fin col -->
 
