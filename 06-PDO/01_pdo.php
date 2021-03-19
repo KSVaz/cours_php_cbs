@@ -96,6 +96,14 @@
             <div class="col-sm-12">
                 <h2><span>III.</span> Faire des requêtes avec <code>query()</code></h2>
                 <p><code>query()</code> est utilisé pour faire des requêtes qui retournent un ou plusieurs résultats : SELECT mais aussi DELETE UPDATE et INSERT</p>
+                <p>En cas de succès : query() retourne un nouvel objet qui provient de la classe PDOstatement. <br> En cas d'échec : false</p>
+
+                <ul>
+                    <li>Pour information, on peut mettre dans les paramètres() de fetch()</li>
+                    <li>PDO::FETCH_NUM : pour obtenir un tableau aux indices numériques</li>
+                    <li>PDO::FETCH_OBJ : pour obtenir un dernier objet</li>
+                    <li>Ou encore des () vides : pour obtenir un mélange de tableau associatif et numérique</li>
+                </ul>
 
                 <?php 
 
@@ -111,21 +119,139 @@
                     jeVarDump($ligne);
 
                     echo "<ul><li>Prénom : " .$ligne['prenom']. "</li><li>Nom : " .$ligne['nom']. "</li><li>Sexe : " .$ligne['sexe']. "</li><li>Service : " .$ligne['service']. "</li><li>Date d'entrée dans l'entreprise : " .$ligne['date_embauche']. "</li><li>Salaire : " .$ligne['salaire']. " €</li></ul>";
+
+                    // exo afficher le service de l'employé dont l'ID est 417 et son nom et son prénom
+
+                    $requete = $pdoENT->query( " SELECT id_employes, prenom, nom FROM employes WHERE id_employes = '417' " );
+                    $ligne = $requete->fetch( PDO::FETCH_ASSOC );
+                    jeVarDump($ligne);
+                    
+                    echo "<ul><li>ID :" .$ligne['id_employes']. "</li><li>Prénom : " .$ligne['prenom']. "</li><li>Nom : " .$ligne['nom']. "</li>";
                 ?> 
                 
             </div><!-- fin col -->
 
-        </div><!-- fin row -->
+            <div class="col-sm-12">
+                <h2><span>IV.</span> Faire des requêtes avec query() et afficher plusieurs résultats</h2>
+                
+                <?php 
+                    $requete = $pdoENT->query("SELECT * FROM employes ORDER BY prenom");
+                    // jeVarDump($requete);
 
-        <div class="row bg-light mt-4">
+                    // $ligne = $requete->fetch( PDO::FETCH_ASSOC );
+                    // jeVarDump($ligne);
 
-            <div class="col-sm-12 col-md-6">
-                <h2><span>VI.</span> </h2>
+                    $nbr_employes = $requete->rowCount();//cette méthode rowCount() permet de compter le nombre d'enregistrements retournés par la requête
+                    // jeVarDump($nbr_employes);
 
+                    echo "<p>Il y a " .$nbr_employes. " employés dans la base.</p>";
+                    
+                    // comme nous avons plusieurs résultats dans $requete, nous devons faire une boucle pour les parcourir
+                    // fetch()va chercher la ligne suivante du jeu de résultat à chaque tour de boucle et le transforme en objet. La boucle while permet de faire avancer le curseur dans l'objet. Quand il arrive à la fin, fetch() retourne FALSE et la boucle s'arrête
+
+                    echo "<ul>";
+                    while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<li>".$ligne['prenom']. " " .$ligne['nom']. " - " .$ligne['sexe']. " - " .$ligne['service']. " - " .$ligne['date_embauche']. " - " .$ligne['salaire']. " €</li>";
+                    }
+                    echo "</ul>";
+
+                    // Exo afficher la liste des différents services dans une ul en mettant un service par li
+
+                    $requete = $pdoENT->query("SELECT DISTINCT(service) FROM employes ORDER BY service");
+                    $nbr_services = $requete->rowCount();
+
+                    echo "<div class=\"bg-info rounded w-50 text-white mt-4 mx-auto\">";
+                    echo "<p class=\"p-2\">Il y a " .$nbr_services. " services dans l'entreprise :</p>";
+                    echo "</div>";
+
+                    echo "<div class=\"border border-info rounded w-50 pt-3 mx-auto\">";
+                    echo "<ul>";
+                    while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<li>".$ligne['service']. "</li>";
+                    }
+                    echo "</ul>";
+                    echo "</div>";
+
+                    // <!-- EXO 1/ dnas un h2, compter le nombre d'employés
+                    // 2/ puis afficher toutes les informations des employés dans un tableau HTML triés par ordre alphabétique de nom
+
+                    $requete = $pdoENT->query("SELECT * FROM employes ORDER BY nom");
+                    $nbr_employes = $requete->rowCount();
+
+                    echo "<h2><span>Exo.</span> Il y a " .$nbr_employes. " employés dans la société.</h2>";
+
+                    echo "<table class=\"table table-dark\">";
+                    echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
+                    while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+                        
+                        echo "<tr>";
+                        echo "<td>#". $ligne['id_employes']. "</td>";   
+
+                        if($ligne['sexe'] == 'f') {
+                            echo "<td>Mme ". $ligne['prenom']. "</td>";
+                        }else {
+                            echo "<td>M. ". $ligne['prenom']. "</td>";
+                        }
+                        echo "<td>". $ligne['nom']. "</td>";
+                        echo "<td>". $ligne['sexe']. "</td>";
+                        echo "<td>". $ligne['service']. "</td>";
+                        echo "<td>". $ligne['date_embauche']. "</td>";
+                        echo "<td>". $ligne['salaire']. " €</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+
+                    // echo "<table class=\"table table-dark\">";
+                    // echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
+                    // while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+                    //     if($ligne['sexe'] == 'f') {
+                    //         echo "<tr>";
+                    //         echo "<td>#". $ligne['id_employes']. "</td>";
+                    //         echo "<td>Mme ". $ligne['prenom']. "</td>";
+                    //         echo "<td>". $ligne['nom']. "</td>";
+                    //         echo "<td>". $ligne['sexe']. "</td>";
+                    //         echo "<td>". $ligne['service']. "</td>";
+                    //         echo "<td>". $ligne['date_embauche']. "</td>";
+                    //         echo "<td>". $ligne['salaire']. " €</td>";
+                    //         echo "</tr>";
+                            
+                    //     }else {
+                    //         echo "<tr>";
+                    //         echo "<td>#". $ligne['id_employes']. "</td>";
+                    //         echo "<td>M. ". $ligne['prenom']. "</td>";
+                    //         echo "<td>". $ligne['nom']. "</td>";
+                    //         echo "<td>". $ligne['sexe']. "</td>";
+                    //         echo "<td>". $ligne['service']. "</td>";
+                    //         echo "<td>". $ligne['date_embauche']. "</td>";
+                    //         echo "<td>". $ligne['salaire']. " €</td>";
+                    //         echo "</tr>";
+                    //     }
+
+                        
+                    // }
+                    // echo "</table>";
+
+                    
+
+                ?> 
                
             </div><!-- fin col -->
 
-            <div class="col-sm-12 col-md-6">
+
+        </div><!-- fin row -->
+
+        <hr>
+
+        <div class="row bg-light mt-4">
+
+            <div class="col-sm-12">
+                <h2><span>V.</span> </h2>
+               
+               
+            </div><!-- fin col -->
+
+            <div class="col-sm-12">
             
             </div><!-- fin col -->
 
