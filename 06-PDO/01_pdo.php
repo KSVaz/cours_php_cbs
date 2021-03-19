@@ -180,18 +180,19 @@
 
                     echo "<h2><span>Exo.</span> Il y a " .$nbr_employes. " employés dans la société.</h2>";
 
-                    echo "<table class=\"table table-dark\">";
+                    echo "<table class=\"table table-dark table-striped\">";
                     echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
                     while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-                        
+
                         echo "<tr>";
                         echo "<td>#". $ligne['id_employes']. "</td>";   
-
+                        echo "<td>";
                         if($ligne['sexe'] == 'f') {
-                            echo "<td>Mme ". $ligne['prenom']. "</td>";
+                            echo "Mme ";
                         }else {
-                            echo "<td>M. ". $ligne['prenom']. "</td>";
+                            echo "M. ";
                         }
+                        echo $ligne['prenom']. "</td>";
                         echo "<td>". $ligne['nom']. "</td>";
                         echo "<td>". $ligne['sexe']. "</td>";
                         echo "<td>". $ligne['service']. "</td>";
@@ -199,40 +200,26 @@
                         echo "<td>". $ligne['salaire']. " €</td>";
                         echo "</tr>";
                     }
+
                     echo "</table>";
 
-                    // echo "<table class=\"table table-dark\">";
-                    // echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
-                    // while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-
-                    //     if($ligne['sexe'] == 'f') {
-                    //         echo "<tr>";
-                    //         echo "<td>#". $ligne['id_employes']. "</td>";
-                    //         echo "<td>Mme ". $ligne['prenom']. "</td>";
-                    //         echo "<td>". $ligne['nom']. "</td>";
-                    //         echo "<td>". $ligne['sexe']. "</td>";
-                    //         echo "<td>". $ligne['service']. "</td>";
-                    //         echo "<td>". $ligne['date_embauche']. "</td>";
-                    //         echo "<td>". $ligne['salaire']. " €</td>";
-                    //         echo "</tr>";
-                            
-                    //     }else {
-                    //         echo "<tr>";
-                    //         echo "<td>#". $ligne['id_employes']. "</td>";
-                    //         echo "<td>M. ". $ligne['prenom']. "</td>";
-                    //         echo "<td>". $ligne['nom']. "</td>";
-                    //         echo "<td>". $ligne['sexe']. "</td>";
-                    //         echo "<td>". $ligne['service']. "</td>";
-                    //         echo "<td>". $ligne['date_embauche']. "</td>";
-                    //         echo "<td>". $ligne['salaire']. " €</td>";
-                    //         echo "</tr>";
-                    //     }
-
-                        
-                    // }
-                    // echo "</table>";
-
-                    
+                    // reprendre ici LUNDI 
+                    echo "<table class=\"table table-info table-striped\">";
+                    foreach ( $pdoENT->query( " SELECT * FROM employes ORDER BY sexe DESC, nom ASC " ) as $infos ) { //$employe étant un tableau on peut le parcourir avec une foreach. La variable $infos prend les valeurs successivement à chaque tour de boucle
+                    // jevardump($infos);
+                    echo "<tr>";
+                    echo "<td>";
+                    if ( $infos['sexe'] == 'f') {
+                      echo "Mme ";
+                    } else {
+                      echo "M. ";
+                    } echo $infos['nom']. " " .$infos['prenom']. "</td>";
+                    echo "<td>" .$infos['service']. " </td>";
+                    echo "<td>" .$infos['date_embauche']. " </td>";
+                    echo "<td>" .$infos['salaire']. " €</td>";
+                    echo "</tr>";
+                    }
+                    echo "</table>";
 
                 ?> 
                
