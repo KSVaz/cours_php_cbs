@@ -63,19 +63,6 @@
                     }
                 ?>    
             </div><!-- fin col -->
-
-            <div class="col-sm-12">
-                <h2><span>II.</span> </h2>
-            </div><!-- fin col -->
-        </div><!-- fin row -->
-
-        <hr>
-
-        <div class="row bg-light p-3">
-            <div class="col-sm-12">
-                <h2><span>III.</span> </h2>
-                
-            </div><!-- fin col -->
         </div><!-- fin row -->
 
     </div> <!-- fin du container -->

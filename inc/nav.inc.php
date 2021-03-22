@@ -17,7 +17,7 @@
                     <a class="dropdown-item" href="../00-pages/03-page.php">03-page</a>
                     <a class="dropdown-item" href="../00-pages/04-page.php">04-page</a>
                 </div>
-            </li> 
+            </li> <!-- fin dossier 00 pages -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Exercices</a>
@@ -26,8 +26,9 @@
                     <a class="dropdown-item" href="../00-exos/02-exo-tableaux.php">02-exo-tableaux</a>
                     <a class="dropdown-item" href="../00-exos/03-exo-form.php">03-exo-formulaires</a>
                     <a class="dropdown-item" href="../00-exos/03-form-traitement.php">03-form-traitement</a>
+                    <a class="dropdown-item" href="../00-exos/04-exo-get.php">04-exo-get</a>
                 </div>
-            </li> 
+            </li> <!-- fin dossier 00 Exos -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="introduction.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Intro</a>
@@ -35,7 +36,7 @@
                     <a class="dropdown-item" href="../01-intro/introduction.php">Introduction</a>
                     <a class="dropdown-item" href="../01-intro/infos.php">Infos PHP</a>
                 </div>
-            </li>
+            </li><!-- fin dossier 01 -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Variables</a>
@@ -45,7 +46,7 @@
                     <a class="dropdown-item" href="../02-variables/chaines.php">Chaînes de caractères</a>
                     <a class="dropdown-item" href="../02-variables/tableaux.php">Tableaux</a>
                 </div>
-            </li> 
+            </li> <!-- fin dossier 02 -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conditions</a>
@@ -53,7 +54,7 @@
                     <a class="dropdown-item" href="../03-conditions/conditions.php">Conditions</a>
                     <a class="dropdown-item" href="../03-conditions/boucles.php">Boucles</a>
                 </div>
-            </li> 
+            </li> <!-- fin dossier 03 -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get et Post</a>
@@ -62,14 +63,35 @@
                     <a class="dropdown-item" href="../04-GET/02-method_get.php">02 - method GET</a>
                     <a class="dropdown-item" href="../05-POST/method_post.php">method POST</a>
                 </div>
-            </li> 
+            </li> <!-- fin dossier 04/05 -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PDO</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                     <a class="dropdown-item" href="../06-PDO/01_pdo.php">PDO</a>
                 </div>
-            </li> 
+            </li> <!-- fin dossier 06 -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">COOKIES</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="../07-COOKIES/07_cookie.php">Cookie</a>
+                </div>
+            </li> <!-- fin dossier 07 -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SESSION</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <!-- <a class="dropdown-item" href="../08-SESSION/08_session.php"></a> -->
+                </div>
+            </li> <!-- fin dossier 08 -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SECURITÉ</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <!-- <a class="dropdown-item" href="../09-SECURITE/09_securite.php"></a> -->
+                </div>
+            </li> <!-- fin dossier 09 -->
         </ul>
     </div>
 </nav>

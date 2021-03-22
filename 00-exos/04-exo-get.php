@@ -15,7 +15,7 @@
     
     <link rel="stylesheet" href="../css/style.css">
 
-    <title>Cours PHP 7 - </title>
+    <title>Cours PHP 7 - Exo GET</title>
 
   </head>
   <body class="bg-dark">
@@ -34,7 +34,7 @@
     <div class="container bg-white p-5">
         <div class="row jumbotron bg-light">
             <div class="col-sm-12">
-                <h1 class="text-center">Cours PHP 7 - </h1>
+                <h1 class="text-center">Cours PHP 7 - Votre compte : John Wayne</h1>
                 <p class="lead text-center mt-4"></p>
             </div>
         </div><!-- fin row -->
@@ -45,27 +45,39 @@
         <div class="row bg-light mt-4">
 
             <div class="col-sm-12 col-md-6">
-                <h2><span>I.</span></h2>
-               
+                <h2><span>I.</span> Modification du compte</h2>
+
+                <!-- 1- Affichez dans cette page un titre "Mon compte : un nom et un prénom"
+                2- Vous y ajoutez un lien "modifier mon compte". Ce lien renvoie dans l'url à la même page, donc à cette page, l'action demandée est "modification", quand on clique sur le lien
+                3- Si vous avez reçu une action "modification" par l'url, alors vous affichez "Vous avez demandé la modification de votre compte" -->
+                 
+                <a href="04-exo-get.php?action=modification">Modifier mon compte</a><br>  
+
+                <?php 
+
+                    //vérification de ce que je récupère en $_GET
+                    // jeVarDump($_GET);
+
+                    if(isset($_GET['action']) && $_GET['action'] == 'modification') {
+                        echo "<p class=\"mt-5 alert alert-warning text-center text-warning font-weight-bold mx-auto w-50\">Vous avez demandé la modification de votre compte.</p>";
+                    }
+
+                ?> 
             </div><!-- fin col -->
 
             <div class="col-sm-12 col-md-6">
-                <h2><span>II.</span></h2>
-            </div><!-- fin col -->
+            <h2><span>II. </span> Suppression du compte</h2>
 
-        </div><!-- fin row -->
+                <a href="04-exo-get.php?action=suppression">Supprimer mon compte</a>  
 
-        <hr>
+                <?php
 
-        <div class="row bg-light mt-4">
+                    // jeVarDump($_GET);
+                    if(isset($_GET['action']) && $_GET['action'] == 'suppression') {
+                        echo "<p class=\"mt-5 alert alert-danger text-center text-danger font-weight-bold mx-auto w-50\">Vous avez demandé à supprimer votre compte.</p>";
+                    }
 
-            <div class="col-sm-12 col-md-6">
-                <h2><span>III.</span></h2>
-               
-            </div><!-- fin col -->
-
-            <div class="col-sm-12 col-md-6">
-            
+                ?>
             </div><!-- fin col -->
 
         </div><!-- fin row -->

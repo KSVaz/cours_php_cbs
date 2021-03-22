@@ -203,7 +203,6 @@
 
                     echo "</table>";
 
-                    // reprendre ici LUNDI 
                     echo "<table class=\"table table-info table-striped\">";
                     foreach ( $pdoENT->query( " SELECT * FROM employes ORDER BY sexe DESC, nom ASC " ) as $infos ) { //$employe étant un tableau on peut le parcourir avec une foreach. La variable $infos prend les valeurs successivement à chaque tour de boucle
                     // jevardump($infos);
@@ -215,14 +214,60 @@
                       echo "M. ";
                     } echo $infos['nom']. " " .$infos['prenom']. "</td>";
                     echo "<td>" .$infos['service']. " </td>";
-                    echo "<td>" .$infos['date_embauche']. " </td>";
-                    echo "<td>" .$infos['salaire']. " €</td>";
+
+                    // Ici on veut que la date s'affiche au format français jj/mm/aaaa
+                    // setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR');
+                    // $dateBDD = $infos['date_embauche'];
+                    // echo "<td>" . strftime('%d %B %Y', strtotime($dateBDD)). " </td>";
+                    echo "<td>" .date('d/m/Y', strtotime($infos['date_embauche'])). " </td>";
+
+
+                    echo "<td>" .number_format($infos['salaire'], 2, ',', ' '). " €</td>"; // number_format() = pour avoir un nombre au format français 0000,00 
                     echo "</tr>";
                     }
                     echo "</table>";
 
                 ?> 
                
+            </div><!-- fin col -->
+
+            <div class="col-sm-12">
+                <h2><span>V.</span> Requêtes préparées</h2>
+                <p>Les requêtes préparées sont préconisées si vous exécutez plusieurs fois la même requête, ainsi vous éviterez au SGBD de répéter toutes les phrases, analyses, interprétations, exécutions etc.. >> on gagne en performance.</p>
+                <p>Les requêtes préparées sont utiles pour nettoyer les données et se prémunir des injections de type SQL (tentative de piratage) cf. 09-securite</p>
+
+                <?php 
+                    // une requête préparée se réalise en 3 étapes
+                    $nom = "Thoyer"; // ici j'ai l'info que je cherche dans une variable, je cherche un résultat ex : je cherche "Thoyer"
+
+                    // 1- on prépare la requête
+                    $resultat = $pdoENT->prepare("SELECT * FROM employes WHERE nom =:nom"); //a- prepare permet de préparer la requête sans l'exécuter
+                    // b- :nom est un marqueur qui est vide (comme une boîte vide) et qui attend une valeur
+                    // c- $resultat est pour le moment un objet PDOstatement
+
+                    // 2- on lie le marqueur :nom à une variable $nbr_employes
+                    $resultat->bindParam(':nom', $nom); // bindParam permet de lier le marqueur :nom à la variable $nom. On lie les paramètres
+                    // $resultat->bindValue(':nom', 'titi'); // si on a besoi de lier le marqueur à une valeur fixe
+                    
+                    // 3- puis on exécute la requête
+                    $resultat->execute(); // permet d'exécuter toute la requête
+                    $employe = $resultat->fetch(PDO::FETCH_ASSOC);
+
+                    jeVarDump($employe); // renvoie TRUE
+
+                    //prepare() et boucle 
+                    $sexe = "f";
+                    $requete = $pdoENT->prepare( " SELECT * FROM employes WHERE sexe = :sexe " ); 
+                    $requete->bindParam(':sexe', $sexe);
+                    $requete->execute();
+                    $nombre_employes = $requete->rowCount();
+                    jeVarDump($nombre_employes);
+                    while ( $ligne = $requete->fetch( PDO::FETCH_ASSOC ) ) {
+						echo "<p>Nom : " .$ligne['prenom']. " " .$ligne['nom']." travaille au service : " .$ligne['service']."</p>";
+					}
+
+                ?> 
+            
             </div><!-- fin col -->
 
 
@@ -233,7 +278,7 @@
         <div class="row bg-light mt-4">
 
             <div class="col-sm-12">
-                <h2><span>V.</span> </h2>
+                <h2><span>VI.</span> </h2>
                
                
             </div><!-- fin col -->

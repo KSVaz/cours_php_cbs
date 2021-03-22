@@ -51,12 +51,12 @@
                     if(!empty($_POST)) {
                     // jeVarDump($_POST);
 
-                    echo "<p>Prénom : " .$_POST['prenom']. "</p><br>";
-                    echo "<p>Nom : " .$_POST['nom']. "</p><br>";
-                    echo "<p>Email : " .$_POST['email']. "</p><br>";
-                    echo "<p>Adresse : " .$_POST['adresse']. "</p><br>";
-                    echo "<p>Code postal : " .$_POST['code_postal']. "</p><br>";
-                    echo "<p>Ville : " .$_POST['ville']. "</p><br>";
+                    echo "<p>Prénom : " .$_POST['prenom']. "</p>";
+                    echo "<p>Nom : " .$_POST['nom']. "</p>";
+                    echo "<p>Email : " .$_POST['email']. "</p>";
+                    echo "<p>Adresse : " .$_POST['adresse']. "</p>";
+                    echo "<p>Code postal : " .$_POST['code_postal']. "</p>";
+                    echo "<p>Ville : " .$_POST['ville']. "</p>";
                     
                     
 
