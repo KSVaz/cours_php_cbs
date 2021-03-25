@@ -1,4 +1,37 @@
-<?php require_once '../inc/functions.php'?> 
+<?php require_once '../inc/functions.php';
+
+$host = 'localhost';
+$database = 'dialogue';
+$user = 'root';
+$psw = '';
+
+$pdoDialogue = new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw);
+$pdoDialogue->exec("SET NAMES utf8");
+
+// Traitement du formulaire & insertion dans la BDD
+// ce formulaire n'est pas assez protégé contre les injections SQL !!! >>>>>> ok');DELETE FROM commentaire;( Cette phrase, insérée dans le textarea, peut supprimer toutes les données de la table
+// if ( !empty($_POST)) {
+//     $resultat = $pdoDialogue->query( "INSERT INTO commentaire (pseudo, date_enregistrement, message) VALUES ('$_POST[pseudo]', NOW(), '$_POST[message]')" );
+//     //NOW() renvoie la date d'aujourd'hui. ATTENTION dans l'exemple l'ordre "mélangé" des indices facilite l'injection SQL
+// }
+
+if ( !empty($_POST)) {
+    //pour se prémunir des failles nous faisons ceci
+    $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);
+    $_POST['message'] = htmlspecialchars($_POST['message']);
+
+    $resultat = $pdoDialogue->prepare( " INSERT INTO commentaire (pseudo, date_enregistrement, message) VALUES (:pseudo, NOW(), :message) " );
+    //NOW() renvoie la date d'aujourd'hui
+
+    $resultat->execute(array (
+        ':pseudo' => $_POST['pseudo'],
+        ':message' => $_POST['message'],
+    ));
+}//fin if !empty
+
+// le fait de mettre des marqueurs dans la requête permet de ne pas concaténer les instructions SQL d'origine et celles qui seraient injectées. Ainsi, elles ne peuvent pas s'exécuter successivement. De plus, en liant les marqueurs à leur valeur dans execute(), l'objet PDO les neutralise automatiquement et les transforme en chaînes de caractères inoffensifs.
+
+?> 
 <!doctype html>
 <html lang="fr">
   <head>
@@ -42,10 +75,30 @@
 
         <hr>
 
-        <div class="row bg-light mt-4">
+        <div class="row bg-light mt-4 pb-3">
 
             <div class="col-sm-12 col-md-6">
-                <h2><span>I.</span> Création d'une BDD "dialogue"</h2>
+                <h2><span>I.</span> Formulaire</h2>
+                
+                <!-- Il faut faire un formulaire HTML avec action et method ; action reste vide si nous insérons grâce à cette même page et POST va enovyer les infos du form dans la super globales $_POST -->
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" value="" required>
+                    </div><!-- fin champs code postal -->
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea type="text" cols="30" rows="5" class="form-control" id="message" name="message" value="" required></textarea>
+                    </div><!-- fin champs ville -->
+
+                    <button type="submit" class="btn btn-small btn-info">Envoyer</button>
+                </form>
+               
+            </div><!-- fin col -->
+
+            <div class="col-sm-12 col-md-6">
+                <h2><span>II.</span> Création d'une BDD "dialogue"</h2>
                 <p>avec les informations suivantes :</p>
         
                 <ul>
@@ -60,36 +113,6 @@
                         </ul>
                     </li>
                 </ul>
-               
-            </div><!-- fin col -->
-
-            <div class="col-sm-12 col-md-6">
-                <h2><span>II.</span> Connexion à la BDD dialogue</h2>
-
-                <?php 
-                    // $pdoENT = new PDO('mysql:host=localhost;dbname=dialogue',
-                    // 'root',
-                    // '',
-                    // array(
-                    //     PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,// cette ligne sert à afficher les erreurs SQL dans le navigateur
-                    //     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',// pour définir le charset des échanges avec la BDD
-                    // ));
-
-                    // connexion PISOLA
-                    $host = 'localhost';
-                    $database = 'dialogue';
-                    $user = 'root';
-                    $psw = '';
-
-                    $pdoDialogue = new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw);
-                    $pdoDialogue ->exec("SET NAMES utf8");
-
-                    // jeVarDump( get_class_methods ($pdoENT));
-
-                    $requete = $pdoDialogue->query( " SELECT * FROM commentaire " );
-                    $ligne = $requete->fetch( PDO::FETCH_ASSOC );
-                    jeVarDump($ligne);
-                ?> 
             </div><!-- fin col -->
 
         </div><!-- fin row -->
@@ -99,27 +122,58 @@
         <div class="row bg-light mt-4">
 
             <div class="col-sm-12">
-                <h2><span>III.</span> Exo</h2>
+                <h2><span>III.</span> Tableaux</h2>
                 
                 <?php 
                     //exo compter les commentaires et affichage des commentaires avec query() et boucle while dans un tableau HTML
                     $requete = $pdoDialogue->query("SELECT * FROM commentaire");
-                    $nbr_commentaires = $requete->rowCount();
+                    $nbr_commentaires = $requete->rowCount(); // je compte le nombre de résultat et je passe le total dans une nouvelle variable
+                    // ou $requete->rowCount();
 
                     echo "<p>Il y a " .$nbr_commentaires. " commentaires dans la base de donnée.</p>";
 
                     echo "<table class=\"table table-dark table-striped w-50\">";
-                    echo "<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Pseudo</th><th scope=\"col\">Date</th><th scope=\"col\">Message</th></tr></thead>";
+                    echo "<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Pseudo</th><th scope=\"col\">Message</th><th scope=\"col\">Date</th></tr></thead>";
                     while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
                         echo "<td>#" .$ligne['id_commentaire']. "</td>";
                         echo "<td>" .$ligne['pseudo']. "</td>";
-                        echo "<td>" .$ligne['date_enregistrement']. "</td>";
                         echo "<td>" .$ligne['message']. "</td>";
+                        echo "<td>" .$ligne['date_enregistrement']. "</td>";
                         echo "</tr>";
                     }
                     echo "</table>";
+
+                    // Autre tableau
+
+                    
                 ?> 
+
+                <table class="table table-dark table-striped w-50">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pseudo</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                
+                <?php 
+                $resultat = $pdoDialogue->query("SELECT * FROM commentaire");
+
+                while ($commentaire = $resultat->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                    <tr>
+                        <td><?php echo $commentaire['id_commentaire']; ?></td>
+                        <td><?php echo $commentaire['pseudo']; ?></td>
+                        <td><?php echo $commentaire['message']; ?></td>
+                        <td><?php echo $commentaire['date_enregistrement']; ?></td>
+                    </tr>
+
+               <?php } ?>
+               </table>
+
             </div><!-- fin col -->
 
         </div><!-- fin row -->
