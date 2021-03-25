@@ -82,14 +82,15 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SESSION</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                    <!-- <a class="dropdown-item" href="../08-SESSION/08_session.php"></a> -->
+                    <a class="dropdown-item" href="../08-SESSION/01_session.php">01 - SESSION</a>
+                    <a class="dropdown-item" href="../08-SESSION/02_session.php">02 - SESSION</a>
                 </div>
             </li> <!-- fin dossier 08 -->
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SECURITÉ</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                    <!-- <a class="dropdown-item" href="../09-SECURITE/09_securite.php"></a> -->
+                    <a class="dropdown-item" href="../09-SECURITE/01_dialogue.php">Dialogue</a>
                 </div>
             </li> <!-- fin dossier 09 -->
         </ul>

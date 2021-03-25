@@ -266,6 +266,19 @@
 						echo "<p>Nom : " .$ligne['prenom']. " " .$ligne['nom']." travaille au service : " .$ligne['service']."</p>";
 					}
 
+                    echo "<hr>";
+
+                    // requête préparée sans bindParam()
+                    $resultat = $pdoENT->prepare("SELECT * FROM employes WHERE prenom = :prenom AND nom = :nom");//préparation de la requête
+                    $resultat->execute(array(
+                        ':nom' => 'Thoyer',
+                        ':prenom' => 'Amandine'//on peut se passer de bindParam()
+                    ));
+                    $employe = $resultat->fetch(PDO::FETCH_ASSOC);//on va chercher les infos
+                    // jeVarDump($employe);
+
+                    echo $employe['prenom']. " " .$employe['nom']. " a été embauchée le " .date('d/m/Y', strtotime($employe['date_embauche'])). " au service " .$employe['service'];//on affiche les infos
+
                 ?> 
             
             </div><!-- fin col -->
@@ -273,21 +286,6 @@
 
         </div><!-- fin row -->
 
-        <hr>
-
-        <div class="row bg-light mt-4">
-
-            <div class="col-sm-12">
-                <h2><span>VI.</span> </h2>
-               
-               
-            </div><!-- fin col -->
-
-            <div class="col-sm-12">
-            
-            </div><!-- fin col -->
-
-        </div><!-- fin row -->
 
 
     </div> <!-- fin du container -->
