@@ -14,11 +14,13 @@ if ( !empty($_POST)) {
     $_POST['nom'] = htmlspecialchars($_POST['nom']);
     $_POST['sexe'] = htmlspecialchars($_POST['sexe']);
     $_POST['service'] = htmlspecialchars($_POST['service']);
-    $_POST['date_embauche'] = htmlspecialchars($_POST['date_embauche']);
+    $_POST['service'] = htmlspecialchars($_POST['service']);
     $_POST['salaire'] = htmlspecialchars($_POST['salaire']);
 
-    $requete = $pdoENT->prepare( " INSERT INTO commentaire (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, NOW(), :salaire) " );
+    //$requete = $pdoENT->prepare( " INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, NOW(), :salaire) " );
     //NOW() renvoie la date d'aujourd'hui
+
+    $requete = $pdoENT->prepare( " INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, :date_embauche, :salaire) " );
 
     $requete->execute(array (
         ':prenom' => $_POST['prenom'],
@@ -29,6 +31,7 @@ if ( !empty($_POST)) {
         ':salaire' => $_POST['salaire'],
     ));
 }//fin if !empty
+
 ?> 
 <!doctype html>
 <html lang="fr">
@@ -113,7 +116,7 @@ if ( !empty($_POST)) {
             <div class="col-sm-12">
                 <h2><span>II.</span> Formulaire</h2>
 
-                <form action="" method="POST">
+                <form action="" method="POST" class="w-50">
                     <div class="form-group">
                         <label for="prenom">Prénom</label>
                         <input type="text" class="form-control" id="prenom" name="prenom" value="" required>
@@ -123,16 +126,6 @@ if ( !empty($_POST)) {
                         <label for="nom">Nom</label>
                         <input type="text" class="form-control" id="nom" name="nom" value="" required>
                     </div>
-
-                    <!-- <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexe" id="sexef" value="">
-                        <label class="form-check-label" for="sexe">f</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="sexe" id="sexem" value="">
-                        <label class="form-check-label" for="sexe">m</label>
-                    </div> -->
 
                     <div class="form-group">
                         <label for="sexe">Sexe</label>
@@ -162,7 +155,7 @@ if ( !empty($_POST)) {
 
                     <div class="form-group">
                         <label for="date_embauche">Date d'embauche</label>
-                        <input type="date" class="form-control" id="date_embauche" name="date_embauche" value="" required>
+                        <input type="date" class="form-control" name="date_embauche" id="date_embauche" value="">
                     </div>
 
                     <div class="form-group">
