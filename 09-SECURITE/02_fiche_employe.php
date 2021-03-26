@@ -8,29 +8,24 @@ $psw = '';
 $pdoENT = new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw);
 $pdoENT->exec("SET NAMES utf8");
 
-if ( !empty($_POST)) {
-    //pour se prémunir des failles nous faisons ceci
-    $_POST['prenom'] = htmlspecialchars($_POST['prenom']);
-    $_POST['nom'] = htmlspecialchars($_POST['nom']);
-    $_POST['sexe'] = htmlspecialchars($_POST['sexe']);
-    $_POST['service'] = htmlspecialchars($_POST['service']);
-    $_POST['date_embauche'] = htmlspecialchars($_POST['date_embauche']);
-    $_POST['salaire'] = htmlspecialchars($_POST['salaire']);
+// traitement des infos reçues par $_GET
+jePrintR($_GET); // pour vérifier que l'on reçoit une info par l'URL.
 
-    //$requete = $pdoENT->prepare( " INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, NOW(), :salaire) " );
-    //NOW() renvoie la date d'aujourd'hui
-
-    $requete = $pdoENT->prepare( " INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, :date_embauche, :salaire) " );
-
-    $requete->execute(array (
-        ':prenom' => $_POST['prenom'],
-        ':nom' => $_POST['nom'],
-        ':sexe' => $_POST['sexe'],
-        ':service' => $_POST['service'],
-        ':date_embauche' => $_POST['date_embauche'],
-        ':salaire' => $_POST['salaire'],
+if (isset ($_GET['id_employes'])) {//si existe l'indice "id_employes" dans $_GET, donc dans l'URL, c'est qu'on a demandé le détail d'un employé.
+    // jePrintR($_GET) 
+    $resultat = $pdoENT->prepare("SELECT * FROM employes WHERE id_employes = :id_employes");
+    $resultat->execute(array (
+        ':id_employes' => $_GET['id_employes']// on associe le marqueur vide à l'id_employes qui provient de l'url
     ));
-}//fin if !empty
+
+    // jePrintR($resultat);
+    // jePrintR($resultat->rowCount());
+
+    if($resultat->rowCount() == 0) {
+        header('location:02_employes.php');
+        exit();
+    }
+}
 
 ?> 
 <!doctype html>
@@ -49,7 +44,7 @@ if ( !empty($_POST)) {
     
     <link rel="stylesheet" href="../css/style.css">
 
-    <title>Cours PHP 7 - Entreprise et employés</title>
+    <title>Cours PHP 7 - Fiche employé</title>
 
   </head>
   <body class="bg-dark">
@@ -68,8 +63,8 @@ if ( !empty($_POST)) {
     <div class="container bg-white p-5">
         <div class="row jumbotron bg-light">
             <div class="col-sm-12">
-                <h1 class="text-center">Cours PHP 7 - Entreprise et employés</h1>
-                <p class="lead text-center mt-4"></p>
+                <h1 class="text-center">Cours PHP 7 - Employé</h1>
+                <p class="lead text-center mt-4">Modification d'un employé</p>
             </div>
         </div><!-- fin row -->
         <!-- fin du jumbotron -->
@@ -79,44 +74,7 @@ if ( !empty($_POST)) {
         <div class="row bg-light mt-4">
 
             <div class="col-sm-12">
-                <h2><span>I.</span> Tableau des employés</h2>
-                <?php 
-                    $requete = $pdoENT->query("SELECT * FROM employes ORDER BY prenom");
-    
-                    $nbr_employes = $requete->rowCount();
-
-                    echo "<p>Il y a " .$nbr_employes. " employés dans la base.</p>";
-
-                    echo "<table class=\"table table-dark table-striped\">";
-                    echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th><th scope=\"col\">Fiche</th></tr></thead>";
-                    while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-
-                        echo "<tr>";
-                        echo "<td>#". $ligne['id_employes']. "</td>";   
-                        echo "<td>";
-                        if($ligne['sexe'] == 'f') {
-                            echo "Mme ";
-                        }else {
-                            echo "M. ";
-                        }
-                        echo $ligne['prenom']. "</td>";
-                        echo "<td>". $ligne['nom']. "</td>";
-                        echo "<td>". $ligne['sexe']. "</td>";
-                        echo "<td>". $ligne['service']. "</td>";
-                        echo "<td>".date('d/m/Y', strtotime($ligne['date_embauche'])). "</td>";
-                        echo "<td>".number_format($ligne['salaire'], 2, ',', ' '). " €</td>";
-                        echo "<td><a href=\"02_fiche_employe.php?id_employes=".$ligne['id_employes']."\" class=\"text-white\">Voir sa fiche</a></td>";
-                        echo "</tr>";
-                    }
-
-                    echo "</table>";
-                ?> 
-               
-            </div><!-- fin col -->
-
-            <div class="col-sm-12">
-                <h2><span>II.</span> Formulaire</h2>
-
+                <h2><span>I.</span></h2>
                 <form action="" method="POST" class="w-50">
                     <div class="form-group">
                         <label for="prenom">Prénom</label>
@@ -166,11 +124,29 @@ if ( !empty($_POST)) {
 
                     <button type="submit" class="btn btn-small btn-info">Envoyer</button>
                 </form>
+               
+            </div><!-- fin col -->
+
+            <div class="col-sm-12">
+                <h2><span>II.</span></h2>
             </div><!-- fin col -->
 
         </div><!-- fin row -->
 
-        
+        <hr>
+
+        <div class="row bg-light mt-4">
+
+            <div class="col-sm-12 col-md-6">
+                <h2><span>III.</span></h2>
+               
+            </div><!-- fin col -->
+
+            <div class="col-sm-12 col-md-6">
+            
+            </div><!-- fin col -->
+
+        </div><!-- fin row -->
 
 
     </div> <!-- fin du container -->
