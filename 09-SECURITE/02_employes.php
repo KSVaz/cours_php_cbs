@@ -1,4 +1,5 @@
-<?php require_once '../inc/functions.php';
+<?php 
+require_once '../inc/functions.php';
 
 $host = 'localhost';
 $database = 'entreprise';
@@ -30,6 +31,7 @@ if ( !empty($_POST)) {
         ':date_embauche' => $_POST['date_embauche'],
         ':salaire' => $_POST['salaire'],
     ));
+    
 }//fin if !empty
 
 ?> 

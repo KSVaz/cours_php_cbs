@@ -91,7 +91,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SECURITÉ</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                     <a class="dropdown-item" href="../09-SECURITE/01_dialogue.php">Dialogue</a>
-                    <a class="dropdown-item" href="../09-SECURITE/02_employes.php">Employes</a>
+                    <a class="dropdown-item" href="../09-SECURITE/02_employes.php">Employés</a>
                     <a class="dropdown-item" href="../09-SECURITE/02_fiche_employe.php">Fiche employé</a>
                 </div>
             </li> <!-- fin dossier 09 -->
