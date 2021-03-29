@@ -1,0 +1,8 @@
+hr:not([size]) {
+    height: 4px;
+}
+
+hr {
+    border-radius: 4px;
+    background-image: linear-gradient(to left, #ffc107, #28a745, #17a2b8);
+}

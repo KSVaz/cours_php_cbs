@@ -95,6 +95,15 @@
                     <a class="dropdown-item" href="../09-SECURITE/02_fiche_employe.php">Fiche employé</a>
                 </div>
             </li> <!-- fin dossier 09 -->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Boutique</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="../10-boutique/test.php">test</a>
+                    <a class="dropdown-item" href="../10-boutique/00_gabarit.php">00_gabarit</a>
+                    <a class="dropdown-item" href="../10-boutique/inscription.php">Inscription</a>
+                </div>
+            </li> <!-- fin dossier 10 -->
         </ul>
     </div>
 </nav>
