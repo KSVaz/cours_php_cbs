@@ -1,8 +1,21 @@
-hr:not([size]) {
+hr:not([size]) { 
     height: 4px;
+    opacity: 1;
 }
 
 hr {
     border-radius: 4px;
-    background-image: linear-gradient(to left, #ffc107, #28a745, #17a2b8);
+    width: 50px;
+    background: #6610f2;
+    /* background-image: linear-gradient(to left, #ffc107, #28a745, #17a2b8); */
+    /* background-image: linear-gradient(to left, #ceb8f1, #9a60f8, #6610f2);
+    opacity: 1; */
+}
+
+.btn {
+    background-color: #6610f2;
+}
+
+svg {
+    opacity: 0.25;
 }
