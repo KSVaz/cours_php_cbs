@@ -70,7 +70,7 @@ if(!empty($_POST)) {//si form n'est pas vide
                 $contenu .= '<div class="alert alert-success">Vous êtes inscrit <a href="connexion.php">Cliquez ici pour vous connecter</a></div>'; 
             } else {
                 $contenu .= '<div class="alert alert-danger">Erreur lors de l`\enregistrement !</div>';
-            }//fin du if if if ($succes)
+            }//fin du if ($succes)
 
         } // fin du if else vérification du membre ou inscription
 
@@ -162,7 +162,8 @@ if(!empty($_POST)) {//si form n'est pas vide
                         <input type="text" class="form-control" name="ville" id="ville" value="<?php echo $_POST['ville'] ?? ''; ?>">
                     </div>
             
-                    <button type="submit" class="btn btn-small text-white mt-4">S'inscrire</button>
+                    <button id="btnEnvoyer" type="submit" class="btn btn-small text-white mt-4">S'inscrire</button>
+                    <button id="btnEffacer" type="reset" class="btn btn-small mt-4">Effacer</button>
                 </form>
             </div><!-- fin col -->
 

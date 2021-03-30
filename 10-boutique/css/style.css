@@ -12,8 +12,12 @@ hr {
     opacity: 1; */
 }
 
-.btn {
+#btnEnvoyer, #btnConnexion {
     background-color: #6610f2;
+}
+
+#btnEffacer {
+    background-color: #ceb8f1;
 }
 
 svg {
