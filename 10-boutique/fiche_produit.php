@@ -2,27 +2,33 @@
 //require à placer sur toutes les pages
 require_once 'inc/init.php';
 
-if (isset ($_GET['id_employes'])) {
+// jePrintR($_GET);
+
+if (isset ($_GET['id_produit'])) {
     $requete = $pdoSITE->prepare("SELECT * FROM produit WHERE id_produit = :id_produit");
     $requete->execute(array (
-        ':id_produit' => $_GET['id_produit']
+        ':id_produit' => $_GET['id_produit'],
     ));
 
-    // jePrintR($resultat);
-    // jePrintR($resultat->rowCount());
+    // jePrintR($requete);
+    // jePrintR($requete->rowCount());
 
-    if($resultat->rowCount() == 0) {
-        header('produits.php');
+    if($requete->rowCount() == 0) {
+        header('location:produits.php');
         exit();
     }
 
     $produit = $requete->fetch(PDO::FETCH_ASSOC);
-    // jePrintR($fiche);
+    // jePrintR($produit);
 }else{
     header('location:produits.php');
     exit();
 }
-?> 
+
+
+
+
+// ?> 
 <!doctype html>
 <html lang="fr">
   <head>
@@ -45,12 +51,13 @@ if (isset ($_GET['id_employes'])) {
   <div class="container-fluid p-5">
         <div class="row jumbotron">
             <div class="col-sm-12">
-                <h1>La Boutique - <?php echo $produit['titre']; ?></h1>
+                <h1>La Boutique - Référence produit : <?php echo $produit['reference']; ?></h1>
             </div>
         </div><!-- fin row -->
         <!-- fin du jumbotron -->
 
         <hr>
+
 
         <div class="row my-5">
             <div class="col-sm-12 col-md-6">
@@ -62,7 +69,10 @@ if (isset ($_GET['id_employes'])) {
 
                         <p class="card-text"><?php echo $produit['description']. "<br>Couleur : " .$produit['couleur']. "<br>Taille : " .$produit['taille']. "<br>Prix : " .$produit['prix']; ?></p>   
                     </div> <!-- fin card body -->
-                </div><!-- fin card --> 
+                </div><!-- fin card -->
+
+                
+        
                
             </div><!-- fin col -->
 

@@ -41,7 +41,7 @@ require_once 'inc/init.php';
 
                     echo "<p class=\"my-4\">Il y a " .$nbr_produits. " produits dans la BDD.</p>";
                 
-                    echo "<table class=\"table table-secondary table-striped\">";
+                    echo "<table class=\"table table-light table-striped\">";
                     echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Référence</th><th scope=\"col\">Catégorie</th><th scope=\"col\">Titre</th><th scope=\"col\">Description</th><th scope=\"col\">Couleur</th><th scope=\"col\">Taille</th><th scope=\"col\">Public</th><th scope=\"col\">Photo</th><th scope=\"col\">Prix</th><th scope=\"col\">Stock</th><th scope=\"col\">Fiche produit</th></tr></thead>";
                     
                     foreach ( $pdoSITE->query( " SELECT * FROM produit " ) as $produit ) { 
@@ -57,7 +57,7 @@ require_once 'inc/init.php';
                     echo "<td>" .$produit['photo']. "</td>";
                     echo "<td>" .$produit['prix']. " </td>";
                     echo "<td>" .$produit['stock']. " </td>";
-                    echo "<td><a href=\" fiche_produit.php?id_produit=".$produit['id_produit']."&description=".$produit['description']."&couleur=".$produit['couleur']. "&taille=".$produit['taille']. "&prix=".$produit['prix']. ">Voir la fiche</a></td>";
+                    echo "<td><a href=\"fiche_produit.php?id_produit=".$produit['id_produit']."\">Voir sa fiche</a></td>";
                     echo "</tr>";
                     }
 
